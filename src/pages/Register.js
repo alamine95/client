@@ -13,7 +13,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { register } from "../redux/features/authSlice";
-import { GoogleLogin } from "react-google-login";
 
 const initialState = {
     firstName: "",
@@ -47,9 +46,6 @@ const Register = () => {
         let { name, value } = e.target;
         setFormValue({ ...formValue, [name]: value });
     };
-
-    const googleSuccess = () => {};
-    const googleFailure = () => {};
 
     return (
         <div style={{
@@ -139,23 +135,6 @@ const Register = () => {
                             </MDBBtn>
                         </div>
                     </MDBValidation>
-                    <br />
-                    <GoogleLogin
-                        clientId="..."
-                        render={(renderProps) => (
-                            <MDBBtn
-                            style={{ width: "100%" }}
-                            color="danger"
-                            onClick={renderProps.onClick}
-                            disabled={renderProps.disabled}
-                            >
-                                <MDBIcon className="me-2" fab icon="google"/> Google Sign In
-                            </MDBBtn>
-                        )}
-                        onSuccess={googleSuccess}
-                        onFailure={googleFailure}
-                        cookiePolicy="single_host_origin"
-                    />
                 </MDBCardBody>
                 <MDBCardFooter>
                     <Link to="/login">
